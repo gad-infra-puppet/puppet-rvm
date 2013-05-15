@@ -14,10 +14,12 @@ class rvm::passenger::apache(
     CentOS,RedHat: { include rvm::passenger::apache::centos::pre }
   }
 
-  class {
-    'rvm::passenger::gem':
-      ruby_version => $ruby_version,
-      version => $version,
+  if !defined(Class['rvm::passenger::gem']) {
+    class {
+      'rvm::passenger::gem':
+        ruby_version => $ruby_version,
+        version => $version,
+    }
   }
 
   # TODO: How can we get the gempath automatically using the ruby version

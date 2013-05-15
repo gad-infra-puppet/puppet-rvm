@@ -16,7 +16,7 @@ class rvm::passenger::nginx::ubuntu::post(
       command   => "${binpath}rvm ${ruby_version} exec passenger-install-nginx-module -a",
       creates   => "${gempath}/passenger-${version}/ext/nginx/mod_passenger.so",
       logoutput => 'on_failure',
-      require   => [Rvm_gem['passenger'], Package['nginx', 'build-essential', 'nginx-dev',
+      require   => [Rvm_gem['passenger'], Package['nginx', 'build-essential', 
                                                   'libcurl4-openssl-dev']],
   }
 
